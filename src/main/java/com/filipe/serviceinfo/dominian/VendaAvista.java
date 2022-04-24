@@ -2,6 +2,7 @@ package com.filipe.serviceinfo.dominian;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,12 +28,11 @@ public class VendaAvista implements Serializable {
 	private LocalDateTime data;
 	
 	@OneToOne
-	@JoinColumn(name = "produto_id")
-	private Produto produto;
-	
-	@OneToOne
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
+	
+	@ManyToMany(mappedBy = "lista_avista")
+	private List<Produto> prduto;
 	  
 	private Integer fPagamento;
 
@@ -39,13 +40,12 @@ public class VendaAvista implements Serializable {
 		super();
 		this.setData(LocalDateTime.now());
 		this.setfPagamento(FormaPagamento.DINHEIRO);
-	}
+	} 
 
-	public VendaAvista(Long id, Produto produto, Funcionario funcionario, FormaPagamento fPagamento) {
+	public VendaAvista(Long id, Funcionario funcionario, FormaPagamento fPagamento) {
 		super();
 		this.id = id;
 		this.setData(LocalDateTime.now());
-		this.produto = produto;
 		this.funcionario = funcionario;
 		this.fPagamento = (fPagamento == null) ? 0 : fPagamento.getCod();
 	}
@@ -66,14 +66,6 @@ public class VendaAvista implements Serializable {
 		this.data = data;
 	}
 
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
@@ -88,6 +80,14 @@ public class VendaAvista implements Serializable {
 
 	public void setfPagamento(FormaPagamento fPagamento) {
 		this.fPagamento = fPagamento.getCod();
+	}
+
+	public List<Produto> getPrduto() {
+		return prduto;
+	}
+
+	public void setLista_prduto(List<Produto> prduto) {
+		this.prduto = prduto;
 	}
 
 	@Override

@@ -49,8 +49,8 @@ public class DBService {
 		Funcionario f1 = new Funcionario(null, "Fulano de Tal", "607.145.810-20", "Inferno da pedra", "(87) 97799-3211", "123456");
 		OS os1 = new OS(null, "Nego do Borel", "(38) 999714563", "Rio de Janeiro", Prioridade.ALTA, Status.ANDAMENTO, "Formatar notebooK", f1);
 		Produto p1 = new Produto(null, "Carregador Turbo Power Type-C", 40.00);
-		VendaAvista v1 = new VendaAvista(null, p1, f1, FormaPagamento.DINHEIRO);
-		VendaAprazo vp1 = new VendaAprazo(null, p1, f1, "Cubertino Osório", "36788914536", "Vaca Preta", "38999625471", Estado.DEVENDO);
+		VendaAvista v1 = new VendaAvista(null, f1, FormaPagamento.DINHEIRO);
+		VendaAprazo vp1 = new VendaAprazo(null, f1, "Cubertino Osório", "36788914536", "Vaca Preta", "38999625471", Estado.DEVENDO);
 		
 		
 		admRepository.saveAll(Arrays.asList(adm1));

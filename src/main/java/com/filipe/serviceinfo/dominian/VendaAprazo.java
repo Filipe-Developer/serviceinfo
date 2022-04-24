@@ -1,6 +1,7 @@
 package com.filipe.serviceinfo.dominian;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -24,10 +26,6 @@ public class VendaAprazo {
 	private LocalDateTime data;
 	
 	@OneToOne
-	@JoinColumn(name = "produto_id")
-	private Produto produto;
-	
-	@OneToOne
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
 	private String nome_cliente;
@@ -36,18 +34,20 @@ public class VendaAprazo {
 	private String fone_cliente;
 	private Integer estado;
 	
+	@ManyToMany(mappedBy = "lista_prazo")
+	private List<Produto> produto;
+	
 	public VendaAprazo() {
 		super();
 		this.setData(LocalDateTime.now());
 		this.setEstado(Estado.DEVENDO);
 	}
 
-	public VendaAprazo(Long id, Produto produto, Funcionario funcionario, String nome_cliente,
+	public VendaAprazo(Long id, Funcionario funcionario, String nome_cliente,
 			String cpf_cliente, String endereco_cliente, String fone_cliente, Estado estado) {
 		super();
 		this.id = id;
 		this.setData(LocalDateTime.now());
-		this.produto = produto;
 		this.funcionario = funcionario;
 		this.nome_cliente = nome_cliente;
 		this.cpf_cliente = cpf_cliente;
@@ -70,14 +70,6 @@ public class VendaAprazo {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
 	}
 
 	public Funcionario getFuncionario() {
@@ -115,7 +107,7 @@ public class VendaAprazo {
 	public String getFone_cliente() {
 		return fone_cliente;
 	}
-
+ 
 	public void setFone_cliente(String fone_cliente) {
 		this.fone_cliente = fone_cliente;
 	}
@@ -133,6 +125,14 @@ public class VendaAprazo {
 		return Objects.hash(cpf_cliente, id);
 	}
 
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -144,6 +144,5 @@ public class VendaAprazo {
 		VendaAprazo other = (VendaAprazo) obj;
 		return Objects.equals(cpf_cliente, other.cpf_cliente) && Objects.equals(id, other.id);
 	}
-	
 	
 }

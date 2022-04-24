@@ -43,7 +43,7 @@ public class ProdutoService {
 	
 	public void delete(Long id) {
 		Produto obj = findById(id);
-		if(obj.getList().size() > 0) {
+		if(obj.getLista_prazo().size() > 0 || obj.getLista_avista().size() > 0) {
 			throw new ViolationException("Vendas Associadas ao produto");
 		}
 		pRepository.deleteById(id);

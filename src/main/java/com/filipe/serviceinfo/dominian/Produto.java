@@ -1,7 +1,6 @@
 package com.filipe.serviceinfo.dominian;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Produto implements Serializable {
@@ -20,9 +21,16 @@ public class Produto implements Serializable {
 	private Long id;
 	private String nome;
 	private Double preco;
-
-	@OneToMany(mappedBy = "produto")
-	private List<VendaAvista> list = new ArrayList<>();
+	
+	@ManyToMany
+	@JoinTable(name = "produto_vendavista", joinColumns = @JoinColumn(name = "produto_id"),
+	inverseJoinColumns = @JoinColumn(name = "venda_vista_id"))
+	private List<VendaAvista> lista_avista;
+	
+	@ManyToMany
+	@JoinTable(name = "produto_vendaprazo", joinColumns = @JoinColumn(name = "produto_id"),
+	inverseJoinColumns = @JoinColumn(name = "venda_prazo_id"))
+	private List<VendaAprazo> lista_prazo;
 
 	public Produto() {
 		super();
@@ -59,12 +67,20 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
-	public List<VendaAvista> getList() {
-		return list;
+	public List<VendaAvista> getLista_avista() {
+		return lista_avista;
 	}
 
-	public void setList(List<VendaAvista> list) {
-		this.list = list;
+	public void setLista_avista(List<VendaAvista> lista_avista) {
+		this.lista_avista = lista_avista;
+	}
+
+	public List<VendaAprazo> getLista_prazo() {
+		return lista_prazo;
+	}
+
+	public void setLista_prazo(List<VendaAprazo> lista_prazo) {
+		this.lista_prazo = lista_prazo;
 	}
 
 	@Override
