@@ -21,6 +21,7 @@ public class Produto implements Serializable {
 	private Long id;
 	private String nome;
 	private Double preco;
+	private String descricao;
 	
 	@ManyToMany
 	@JoinTable(name = "produto_vendavista", joinColumns = @JoinColumn(name = "produto_id"),
@@ -36,11 +37,12 @@ public class Produto implements Serializable {
 		super();
 	}
 
-	public Produto(Long id, String nome, Double preco) {
+	public Produto(Long id, String nome, Double preco, String descricao) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
+		this.descricao = descricao;
 	}
 
 	public Long getId() {
@@ -81,6 +83,14 @@ public class Produto implements Serializable {
 
 	public void setLista_prazo(List<VendaAprazo> lista_prazo) {
 		this.lista_prazo = lista_prazo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class DBService {
 		ADM adm1 = new ADM(null, "Filipe Pereira sa Silva", "12198414635", "Fazenda Trairinha", "(38) 99908-9872", "SENHA_ACESSO");
 		Funcionario f1 = new Funcionario(null, "Fulano de Tal", "607.145.810-20", "Inferno da pedra", "(87) 97799-3211", "123456");
 		OS os1 = new OS(null, "Nego do Borel", "(38) 999714563", "Rio de Janeiro", Prioridade.ALTA, Status.ANDAMENTO, "Formatar notebooK", f1);
-		Produto p1 = new Produto(null, "Carregador Turbo Power Type-C", 40.00);
+		Produto p1 = new Produto(null, "Carregador de celular", 40.00, "Turbo power Type-C");
 		VendaAvista v1 = new VendaAvista(null, f1, FormaPagamento.DINHEIRO);
 		VendaAprazo vp1 = new VendaAprazo(null, f1, "Cubertino Osório", "36788914536", "Vaca Preta", "38999625471", Estado.DEVENDO);
 		

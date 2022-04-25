@@ -30,7 +30,7 @@ public class ProdutoService {
 	}
 	
 	public Produto create( ProdutoDTO objDTO) {
-		return pRepository.save(new Produto(null, objDTO.getNome(), objDTO.getPreco()));
+		return pRepository.save(new Produto(null, objDTO.getNome(), objDTO.getPreco(), objDTO.getDescricao()));
 	}
 	
 	public Produto update(Long id, @Valid ProdutoDTO objDTO) {
@@ -38,6 +38,7 @@ public class ProdutoService {
 		
 		oldObj.setNome(objDTO.getNome());
 		oldObj.setPreco(objDTO.getPreco());
+		oldObj.setDescricao(objDTO.getDescricao());
 		return pRepository.save(oldObj);
 	}
 	

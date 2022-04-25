@@ -10,9 +10,8 @@ public class ProdutoDTO {
 	
 	@NotEmpty(message = "Capo nome é Obrigatório!")
 	private String nome;
-	
-	
 	private Double preco;
+	private String descricao;
 	
 	public ProdutoDTO() {
 		super();
@@ -23,6 +22,7 @@ public class ProdutoDTO {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
+		this.descricao = obj.getDescricao();
 	}
 
 	public Long getId() {
@@ -48,6 +48,13 @@ public class ProdutoDTO {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 }
