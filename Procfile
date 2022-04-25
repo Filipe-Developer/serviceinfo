@@ -1,1 +1,0 @@
-web: java $JAVA_OPTS -jar target/dependency/Service_Informatica-runner.jar --port $PORT target/*.war
