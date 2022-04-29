@@ -11,7 +11,7 @@ public class OSDTO {
 
 	private Long id;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataIni;
 	private String nome_cliente;
 	private String fone_cliente;
