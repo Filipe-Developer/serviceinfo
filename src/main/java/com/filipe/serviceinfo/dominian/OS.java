@@ -50,7 +50,6 @@ public class OS implements Serializable{
 		this.nome_cliente = nome_cliente;
 		this.fone_cliente = fone_cliente;
 		this.endereco_cliente = endereco_cliente;
-		this.setDataIni(LocalDate.now());
 		this.prioridade = (prioridade == null) ? 0 : prioridade.getCod();
 		this.status = (status == null) ? 0 : status.getCod();
 		this.observacoes = observacoes;
