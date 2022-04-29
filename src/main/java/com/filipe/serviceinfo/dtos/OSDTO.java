@@ -20,6 +20,7 @@ public class OSDTO {
 	private Integer status;
 	private String observacoes;
 	private Long funcionario;
+	private Double valor;
 	
 	public OSDTO() {
 		super();
@@ -36,6 +37,7 @@ public class OSDTO {
 		this.status = obj.getStatus().getCod();
 		this.observacoes = obj.getObservacoes();
 		this.funcionario = obj.getFuncionario().getId();
+		this.valor = obj.getValor();
 	}
 
 	public Long getId() {
@@ -109,6 +111,13 @@ public class OSDTO {
 	public void setFuncionario(Long funcionario) {
 		this.funcionario = funcionario;
 	}
-	
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 	
 }

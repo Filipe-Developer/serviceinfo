@@ -30,6 +30,7 @@ public class OS implements Serializable{
 	private Integer prioridade;
 	private Integer status;
 	private String observacoes;
+	private Double valor;
 	
 	@OneToOne
 	@JoinColumn(name = "funcionario_id")
@@ -43,7 +44,7 @@ public class OS implements Serializable{
 	}
 
 	public OS(Long id, String nome_cliente, String fone_cliente,
-			String endereco_cliente, Prioridade prioridade, Status status, String observacoes, Funcionario funcionario) {
+			String endereco_cliente, Prioridade prioridade, Status status, String observacoes, Funcionario funcionario, Double valor) {
 		super();
 		this.id = id;
 		this.nome_cliente = nome_cliente;
@@ -54,6 +55,7 @@ public class OS implements Serializable{
 		this.status = (status == null) ? 0 : status.getCod();
 		this.observacoes = observacoes;
 		this.funcionario = funcionario;
+		this.valor = valor;
 	}
 
 	public Long getId() {
@@ -126,6 +128,14 @@ public class OS implements Serializable{
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	@Override

@@ -45,6 +45,7 @@ public class OSService {
 		newObj.setPrioridade(obj.getPrioridade());
 		newObj.setStatus(obj.getStatus());
 		newObj.setObservacoes(obj.getObservacoes());
+		newObj.setValor(obj.getValor());
 		
 		Funcionario funci = fService.findById(obj.getFuncionario());
 		newObj.setFuncionario(funci);
