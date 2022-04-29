@@ -1,7 +1,7 @@
 package com.filipe.serviceinfo.dominian;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class OS implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private LocalDate dataIni;
+	private LocalDateTime dataIni;
 	
 	private String nome_cliente;
 	private String fone_cliente;
@@ -38,7 +38,7 @@ public class OS implements Serializable{
 	
 	public OS() {
 		super();
-		this.setDataIni(LocalDate.now());
+		this.setDataIni(LocalDateTime.now());
 		this.setPrioridade(Prioridade.BAIXA);
 		this.setStatus(Status.ANDAMENTO);
 	}
@@ -47,6 +47,7 @@ public class OS implements Serializable{
 			String endereco_cliente, Prioridade prioridade, Status status, String observacoes, Funcionario funcionario, Double valor) {
 		super();
 		this.id = id;
+		this.dataIni = (LocalDateTime.now());
 		this.nome_cliente = nome_cliente;
 		this.fone_cliente = fone_cliente;
 		this.endereco_cliente = endereco_cliente;
@@ -89,11 +90,11 @@ public class OS implements Serializable{
 		this.endereco_cliente = endereco_cliente;
 	}
 
-	public LocalDate getDataIni() {
+	public LocalDateTime getDataIni() {
 		return dataIni;
 	}
 
-	public void setDataIni(LocalDate dataIni) {
+	public void setDataIni(LocalDateTime dataIni) {
 		this.dataIni = dataIni;
 	}
 

@@ -1,6 +1,6 @@
 package com.filipe.serviceinfo.dtos;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.filipe.serviceinfo.dominian.OS;
@@ -12,7 +12,7 @@ public class OSDTO {
 	private Long id;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataIni;
+	private LocalDateTime dataIni;
 	private String nome_cliente;
 	private String fone_cliente;
 	private String endereco_cliente;
@@ -48,7 +48,7 @@ public class OSDTO {
 		this.id = id;
 	}
 
-	public LocalDate getDataIni() {
+	public LocalDateTime getDataIni() {
 		return dataIni;
 	}
 
@@ -76,7 +76,7 @@ public class OSDTO {
 		this.endereco_cliente = endereco_cliente;
 	}
 
-	public void setDataIni(LocalDate dataIni) {
+	public void setDataIni(LocalDateTime dataIni) {
 		this.dataIni = dataIni;
 	}
 
