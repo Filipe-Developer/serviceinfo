@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 import com.filipe.serviceinfo.dominian.enums.Prioridade;
 import com.filipe.serviceinfo.dominian.enums.Status;
@@ -32,10 +30,7 @@ public class OS implements Serializable{
 	private String observacoes;
 	private Double valor;
 	
-	@OneToOne
-	@JoinColumn(name = "funcionario_id")
-	private Funcionario funcionario;
-	
+
 	public OS() {
 		super();
 		this.setDataIni(LocalDateTime.now());
@@ -44,7 +39,7 @@ public class OS implements Serializable{
 	}
 
 	public OS(Long id, String nome_cliente, String fone_cliente,
-			String endereco_cliente, Prioridade prioridade, Status status, String observacoes, Funcionario funcionario, Double valor) {
+			String endereco_cliente, Prioridade prioridade, Status status, String observacoes, Double valor) {
 		super();
 		this.id = id;
 		this.dataIni = (LocalDateTime.now());
@@ -54,7 +49,6 @@ public class OS implements Serializable{
 		this.prioridade = (prioridade == null) ? 0 : prioridade.getCod();
 		this.status = (status == null) ? 0 : status.getCod();
 		this.observacoes = observacoes;
-		this.funcionario = funcionario;
 		this.valor = valor;
 	}
 
@@ -120,14 +114,6 @@ public class OS implements Serializable{
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
-	}
-
-	public Funcionario getFuncionario() {
-		return funcionario;
-	}
-
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
 	}
 
 	public Double getValor() {

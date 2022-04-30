@@ -66,9 +66,9 @@ public class FuncionarioService {
 	
 	public void delete(Long id) {
 		Funcionario obj = findById(id);
-		if(obj.getListOS().size() > 0) {
-			throw new ViolationException("Ordem de serviço associada ao funcionário, não pode ser deletado!");
-		}
+		//if(obj.getListOS().size() > 0) {
+			//throw new ViolationException("Ordem de serviço associada ao funcionário, não pode ser deletado!");
+		//}
 		fRepository.deleteById(id);
 	}
 }

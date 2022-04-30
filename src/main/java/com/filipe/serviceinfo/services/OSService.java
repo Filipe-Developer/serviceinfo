@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.filipe.serviceinfo.dominian.Funcionario;
 import com.filipe.serviceinfo.dominian.OS;
 import com.filipe.serviceinfo.dtos.OSDTO;
 import com.filipe.serviceinfo.repositories.OSRepository;
@@ -20,8 +19,6 @@ public class OSService {
 	@Autowired
 	private OSRepository osRepository;
 	
-	@Autowired
-	private FuncionarioService fService;
 	
 	public OS findById(Long id) {
 		Optional<OS> obj = osRepository.findById(id);
@@ -47,8 +44,8 @@ public class OSService {
 		newObj.setObservacoes(obj.getObservacoes());
 		newObj.setValor(obj.getValor());
 		
-		Funcionario funci = fService.findById(obj.getFuncionario());
-		newObj.setFuncionario(funci);
+		/*Funcionario funci = fService.findById(obj.getFuncionario());
+		newObj.setFuncionario(funci);*/
 		
 		return osRepository.save(newObj);
 	}
